@@ -49,7 +49,7 @@ scene.init = engine => {
 scene.render = (engine, now) => {
   const { gl, programInfo, buffers } = engine;
 
-  gl.clearColor(0.0, 0.0, 0.0, 1.0);
+  gl.clearColor(48.0 / 255.0, 48.0 / 255.0, 48.0 / 255.0, 1.0);
   gl.clearDepth(1.0);
   gl.enable(gl.DEPTH_TEST);
   gl.depthFunc(gl.LEQUAL);

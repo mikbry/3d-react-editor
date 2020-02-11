@@ -1,20 +1,69 @@
-body {
+:root {
+  --right-drawer-width: 320px;
+  --left-drawer-width: 256px;
+}
+
+html, body {
   margin: 0px;
   padding: 0px;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
 }
 
 .App {
-  text-align: center;
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.App-bar {
+  z-index: 1201;
 }
 
 .App-title {
-  padding: 16px;
+  flex-grow: 1;
+}
+
+.App-toolbar {
+  min-height: 64px;
+}
+
+.App-main {
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.App-container {
+  padding: 24px;
+}
+
+.App-right-drawer {
+  width: var(--right-drawer-width);
+  flex-shrink: 0;
+}
+
+.App-right-drawer-paper {
+  width: var(--right-drawer-width);
+}
+
+.App-right-drawer .MuiDrawer-paper {
+  width: var(--right-drawer-width);
+}
+
+.App-left-drawer {
+  width: var(--left-drawer-width);
+  flex-shrink: 0;
+}
+
+.App-left-drawer-paper {
+  width: var(--left-drawer-width);
+}
+
+.App-left-drawer .MuiDrawer-paper {
+  width: var(--left-drawer-width);
 }

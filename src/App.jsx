@@ -8,19 +8,64 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Drawer from '@material-ui/core/Drawer';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import red from '@material-ui/core/colors/red';
+import blueGrey from '@material-ui/core/colors/blueGrey';
 import './App.css';
-import GLView from './GLView.jsx';
+import SceneView from './components/SceneView';
+import Inspector from './containers/Inspector';
+import Explorer from './containers/Explorer';
+import Toolbox from './containers/Toolbox';
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+    primary: red,
+    secondary: blueGrey,
+  },
+});
 
 function App({ scene }) {
   return (
     <div className="App">
-      <GLView width={720} height={480} scene={scene} />
-      <div className="App-title">WebGL React App</div>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <AppBar position="fixed" color="default" className="App-bar">
+          <Toolbar>
+            <Typography variant="h6" className="App-title">
+              3D React Editor
+            </Typography>
+            <Toolbox />
+            <Button color="inherit">Preview</Button>
+          </Toolbar>
+        </AppBar>
+        <Drawer className="App-left-drawer" variant="permanent" anchor="left">
+          <div className="App-toolbar" />
+          <Explorer />
+        </Drawer>
+        <main className="App-main">
+          <div className="App-container">
+            <div className="App-toolbar" />
+            <SceneView scene={scene} />
+          </div>
+        </main>
+        <Drawer className="App-right-drawer" variant="permanent" anchor="right">
+          <div className="App-toolbar" />
+          <Inspector />
+        </Drawer>
+      </ThemeProvider>
     </div>
   );
 }
 
 App.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   scene: PropTypes.object.isRequired,
 };
 

@@ -10,7 +10,7 @@
   "scripts": {
     "clean": "rimraf build && mkdir build",
     "build": "yarn clean &  cross-env NODE_ENV=production rollup -c",
-    "start": "yarn clean &  cross-env NODE_ENV=development nollup --hot --content-base build --port 9000",
+    "start": "yarn clean &  cross-env NODE_ENV=development nollup --hot --content-base build --port 9001",
     "lint": "$(yarn bin)/eslint src",
     "test": "cross-env NODE_ENV=test  $(yarn bin)/mocha  --require esm",
     "coverage": "cross-env NODE_ENV=test  $(yarn bin)/nyc  _mocha",
@@ -61,6 +61,10 @@
     }
   },
   "dependencies": {
+    "@material-ui/core": "^4.9.2",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.42",
+    "@material-ui/styles": "^4.9.0",
     "gl-matrix": "^3.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
