@@ -27,17 +27,25 @@ export default class WebGL {
     this.buildShaders(scene.shaders);
     this.buildBuffers(scene.model);
     scene.init(this);
-    this.initProjection(gl);
+    this.setProjection();
     this.render = this.render.bind(this);
     this.requestId = requestAnimationFrame(this.render);
   }
 
-  initProjection(gl) {
-    const fieldOfView = (45 * Math.PI) / 180; // in radians
-    const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
-    const zNear = 0.1;
-    const zFar = 100.0;
-    this.projectionMatrix = perspective(fieldOfView, aspect, zNear, zFar);
+  setProjection(type = 'Perspective', _parameters) {
+    const { gl } = this;
+    const parameters = _parameters || {};
+    if (type === 'Perspective') {
+      if (Object.keys(parameters).length === 0) {
+        parameters.fieldOfView = (45 * Math.PI) / 180; // in radians
+        parameters.zNear = 0.1;
+        parameters.zFar = 100.0;
+      }
+      const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
+      this.projectionMatrix = perspective(parameters.fieldOfView, aspect, parameters.zNear, parameters.zFar);
+    } else {
+      throw new Error(`WebGL unknown projection type ${type}`);
+    }
   }
 
   render(now) {

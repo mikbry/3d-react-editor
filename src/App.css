@@ -67,3 +67,8 @@ html, body {
 .App-left-drawer .MuiDrawer-paper {
   width: var(--left-drawer-width);
 }
+
+.App-parameters-switch {
+  margin-top: 16px;
+  margin-left: 22px;
+}

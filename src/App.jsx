@@ -18,6 +18,7 @@ import Button from '@material-ui/core/Button';
 import red from '@material-ui/core/colors/red';
 import blueGrey from '@material-ui/core/colors/blueGrey';
 import './App.css';
+import { StoreProvider } from './store';
 import SceneView from './components/SceneView';
 import Inspector from './containers/Inspector';
 import Explorer from './containers/Explorer';
@@ -33,34 +34,36 @@ const theme = createMuiTheme({
 
 function App({ scene }) {
   return (
-    <div className="App">
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <AppBar position="fixed" color="default" className="App-bar">
-          <Toolbar>
-            <Typography variant="h6" className="App-title">
-              3D React Editor
-            </Typography>
-            <Toolbox />
-            <Button color="inherit">Preview</Button>
-          </Toolbar>
-        </AppBar>
-        <Drawer className="App-left-drawer" variant="permanent" anchor="left">
-          <div className="App-toolbar" />
-          <Explorer />
-        </Drawer>
-        <main className="App-main">
-          <div className="App-container">
+    <StoreProvider>
+      <div className="App">
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <AppBar position="fixed" color="default" className="App-bar">
+            <Toolbar>
+              <Typography variant="h6" className="App-title">
+                3D React Editor
+              </Typography>
+              <Toolbox />
+              <Button color="inherit">Preview</Button>
+            </Toolbar>
+          </AppBar>
+          <Drawer className="App-left-drawer" variant="permanent" anchor="left">
             <div className="App-toolbar" />
-            <SceneView scene={scene} />
-          </div>
-        </main>
-        <Drawer className="App-right-drawer" variant="permanent" anchor="right">
-          <div className="App-toolbar" />
-          <Inspector />
-        </Drawer>
-      </ThemeProvider>
-    </div>
+            <Explorer />
+          </Drawer>
+          <main className="App-main">
+            <div className="App-container">
+              <div className="App-toolbar" />
+              <SceneView scene={scene} />
+            </div>
+          </main>
+          <Drawer className="App-right-drawer" variant="permanent" anchor="right">
+            <div className="App-toolbar" />
+            <Inspector />
+          </Drawer>
+        </ThemeProvider>
+      </div>
+    </StoreProvider>
   );
 }
 
