@@ -9,6 +9,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import { useStore } from '../../store';
+import SceneParams from '../../components/SceneParams';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,37 +31,23 @@ const useStyles = makeStyles(theme => ({
 
 const Inspector = () => {
   const classes = useStyles();
-
+  const { state } = useStore();
+  const { selectedItem } = state;
+  let props;
+  let params;
+  if (selectedItem.type === 'Scene') {
+    props = state.scene.properties;
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    params = <SceneParams {...props} />;
+  } else {
+    params = <div>TODO</div>;
+  }
   return (
     <div className={classes.root}>
       <Typography variant="h6" className={classes.title}>
-        Inspector :: Scene
+        Inspector :: {selectedItem.type}
       </Typography>
-      <div className={classes.params}>Title : scene</div>
-      <div className={classes.params}>
-        Background
-        <br />
-        color : #303030FF
-      </div>
-      <div className={classes.params}>
-        Canvas
-        <br />
-        width : 720
-        <br />
-        width : 480
-      </div>
-      <div className={classes.params}>
-        Projection <br />
-        type : perspective <br />
-        FOV : 45 <br />
-        zNear : 0.1 <br />
-        zFar : 100
-      </div>
-      <div className={classes.params}>
-        Depth
-        <br />
-        enable : true
-      </div>
+      {params}
     </div>
   );
 };
