@@ -8,7 +8,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import WebGL from './WebGL';
+import WebGL from '../engine/WebGL';
 
 const GLView = ({ width, height, scene }) => {
   const ref = useRef();

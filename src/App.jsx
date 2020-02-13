@@ -19,7 +19,7 @@ import red from '@material-ui/core/colors/red';
 import blueGrey from '@material-ui/core/colors/blueGrey';
 import './App.css';
 import { StoreProvider } from './store';
-import SceneView from './components/SceneView';
+import Viewport from './containers/Viewport';
 import Inspector from './containers/Inspector';
 import Explorer from './containers/Explorer';
 import Toolbox from './containers/Toolbox';
@@ -54,7 +54,7 @@ function App({ scene }) {
           <main className="App-main">
             <div className="App-container">
               <div className="App-toolbar" />
-              <SceneView scene={scene} />
+              <Viewport scene={scene} />
             </div>
           </main>
           <Drawer className="App-right-drawer" variant="permanent" anchor="right">

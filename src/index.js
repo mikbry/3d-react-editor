@@ -9,6 +9,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import scene from './scene';
+import scene from './engine/scene';
 
 ReactDOM.render(React.createElement(App, { scene }), document.getElementById('root'));
