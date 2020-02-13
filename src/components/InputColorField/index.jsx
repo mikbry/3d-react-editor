@@ -19,7 +19,7 @@ const InputColorField = ({
   value,
   ...props
 }) => {
-  const [showPicker, setShowPicker] = React.useState(false);
+  const [displayPicker, togglePicker] = React.useState(false);
   const [internalValue, setValue] = React.useState(value);
   return (
     <>
@@ -29,8 +29,9 @@ const InputColorField = ({
         label={floatingLabelText || label}
         placeholder={hintText || placeholder}
         onChange={e => {
+          togglePicker(false);
           setValue(e.target.value);
-          onChange(e.target.value);
+          onChange(e);
         }}
         value={internalValue}
         // eslint-disable-next-line react/jsx-props-no-spreading
@@ -42,24 +43,24 @@ const InputColorField = ({
           startAdornment: <InputAdornment position="start">#</InputAdornment>,
           endAdornment: (
             <InputAdornment position="end">
-              <IconButton aria-label="color picker" onClick={() => setShowPicker(true)}>
+              <IconButton aria-label="color picker" onClick={() => togglePicker(!displayPicker)}>
                 <PaletteOutlinedIcon fontSize="small" />
               </IconButton>
             </InputAdornment>
           ),
         }}
       />
-      {showPicker && (
+      {displayPicker && (
         <ColorPickerDialog
           value={value === undefined ? internalValue : value}
           onClick={() => {
-            setShowPicker(false);
+            togglePicker(false);
             onChange(value);
           }}
           onChange={c => {
-            const newValue = c;
+            const newValue = c.hex.substring(1).toUpperCase();
             setValue(newValue);
-            onChange(newValue);
+            onChange({ target: { value: newValue } });
           }}
         />
       )}
