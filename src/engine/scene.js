@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { create, translate, rotate } from './utils/matrix4';
+import { create, translate, rotate } from '../utils/matrix4';
 import fs from './shaders/one.fs';
 import vs from './shaders/one.vs';
 
@@ -41,6 +41,8 @@ const scene = {
 const impl = {};
 
 scene.init = engine => {
+  engine.buildShaders(scene.shaders);
+  engine.buildBuffers(scene.model);
   impl.engine = engine;
   impl.squareRotation = 0;
   impl.from = null;
@@ -69,10 +71,11 @@ scene.render = (engine, now) => {
   gl.useProgram(programInfo.program);
   gl.uniformMatrix4fv(programInfo.uniformLocations.projectionMatrix, false, engine.projectionMatrix);
   gl.uniformMatrix4fv(programInfo.uniformLocations.modelViewMatrix, false, modelViewMatrix);
-  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  // gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  gl.drawArrays(gl.LINE_STRIP, 0, 4);
 
-  const deltaTime = impl.from === null ? 0 : now - impl.from;
-  impl.squareRotation += deltaTime * 0.001;
+  // const deltaTime = impl.from === null ? 0 : now - impl.from;
+  // impl.squareRotation += deltaTime * 0.001;
   impl.from = now;
 };
 

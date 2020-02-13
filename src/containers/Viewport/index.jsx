@@ -7,12 +7,12 @@
  */
 
 import React from 'react';
-import GLView from '../../GLView';
+import GLView from '../../components/GLView';
 
-const SceneView = ({ scene }) => (
+const Viewport = ({ scene }) => (
   <div style={{ width: '720px', height: '480px', position: 'relative', margin: 'auto' }}>
     <GLView width={720} height={480} scene={scene} />
   </div>
 );
 
-export default SceneView;
+export default Viewport;
