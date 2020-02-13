@@ -36,15 +36,21 @@ const useStyles = makeStyles(theme => ({
 const SceneParams = ({ title, background, canvas, projection, buffers }) => {
   const classes = useStyles();
   const [type, setType] = React.useState(projection.type);
-
+  const [backgroundColor, setBackgroundColor] = React.useState(background.color);
+  const [depthEnabled, setDepth] = React.useState(buffers.depth.enabled);
   const handleTypeChange = event => {
     setType(event.target.value);
   };
 
-  const [depthEnabled, setDepth] = React.useState(buffers.depth.enabled);
-
   const handleDepthChange = event => {
     setDepth(event.target.checked);
+  };
+
+  const handleColorChange = event => {
+    const { value } = event.target;
+    if (value && value !== backgroundColor) {
+      setBackgroundColor(value);
+    }
   };
 
   return (
@@ -61,10 +67,11 @@ const SceneParams = ({ title, background, canvas, projection, buffers }) => {
           <InputColorField
             id="scene-background-color"
             label="Color"
-            value={background.color}
+            value={backgroundColor}
             color="secondary"
             fullWidth
             margin="dense"
+            onChange={handleColorChange}
           />
         </Grid>
       </Grid>
