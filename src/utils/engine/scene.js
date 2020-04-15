@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { create, translate, rotate } from '../utils/matrix4';
+import { create, translate, rotate } from '../matrix4';
 import fs from './shaders/one.fs';
 import vs from './shaders/one.vs';
 

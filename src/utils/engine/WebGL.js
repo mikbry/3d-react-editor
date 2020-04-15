@@ -6,8 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { initShaderProgram } from '../utils/shaderTools';
-import { perspective } from '../utils/matrix4';
+import { initShaderProgram } from '../shaderTools';
+import { perspective } from '../matrix4';
 
 export default class WebGL {
   constructor(canvas, width, height) {
