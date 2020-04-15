@@ -1,5 +1,5 @@
 import resolve from '@rollup/plugin-node-resolve';
-import babel from 'rollup-plugin-babel';
+import typescript from '@rollup/plugin-typescript';
 import { terser } from 'rollup-plugin-terser';
 import replace from '@rollup/plugin-replace';
 import url from '@rollup/plugin-url';
@@ -38,7 +38,7 @@ const watch = () => ({
   ],
 });
 
-const plugins = babelConf => [
+const plugins = () => [
   copy({
     targets: [
       {
@@ -71,8 +71,8 @@ const plugins = babelConf => [
     hot: development,
     filename: development ? 'styles.css' : 'static/assets/styles.css',
   }),
-  babel(babelConf),
-  resolve({ extensions: ['.mjs', '.js', '.jsx', '.json'] }),
+  typescript(),
+  resolve({ extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx', '.json'] }),
   string({
     include: ['**/*.fs', '**/*.vs'],
   }),
@@ -91,25 +91,11 @@ const esm = {
     sourcemap: true,
   },
   watch: watch(),
-  plugins: plugins({
-    exclude: 'node_modules/**',
-    presets: [
-      [
-        '@babel/preset-env',
-        {
-          targets: {
-            esmodules: true,
-          },
-        },
-      ],
-      '@babel/preset-react',
-    ],
-    plugins: development ? ['react-refresh/babel'] : [],
-  }),
+  plugins: plugins(),
 };
 
 const iife = {
-  input: 'src/index.js',
+  input: 'src/index.ts',
   output: {
     dir: 'build',
     format: 'iife',
@@ -119,19 +105,7 @@ const iife = {
     sourcemap: true,
   },
   watch: watch(),
-  plugins: plugins({
-    presets: [
-      [
-        '@babel/preset-env',
-        {
-          targets: {
-            browsers: ['> 0.5%'],
-          },
-        },
-      ],
-      '@babel/preset-react',
-    ],
-  }),
+  plugins: plugins(),
 };
 
 const config = [esm];

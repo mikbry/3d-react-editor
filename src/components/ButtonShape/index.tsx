@@ -5,8 +5,7 @@
  * This source code is licensed under the license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
@@ -16,10 +15,11 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.primary,
   },
 }));
-const ButtonShape = ({ name }) => {
+type ButtonProps = { name: string };
+const ButtonShape: FunctionComponent<ButtonProps> = ({ name }) => {
   const classes = useStyles();
   return (
-    <Button className={classes.button} size="small" variant="outlined" color="primary">
+    <Button className={classes.button} size='small' variant='outlined' color='primary'>
       {name}
     </Button>
   );
