@@ -9,7 +9,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import ButtonShape from '../../components/ButtonShape';
+import ButtonShape from '../ButtonShape';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,24 +28,24 @@ const Toolbox = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Grid container direction="row" justify="flex-start" alignItems="flex-start">
+      <Grid container direction='row' justify='flex-start' alignItems='flex-start'>
         <Grid item>
-          <ButtonShape name="Plane" />
+          <ButtonShape name='Plane' />
         </Grid>
         <Grid item>
-          <ButtonShape name="Cube" />
+          <ButtonShape name='Cube' />
         </Grid>
         <Grid item>
-          <ButtonShape name="Sphere" />
+          <ButtonShape name='Sphere' />
         </Grid>
         <Grid item>
-          <ButtonShape name="Cylinder" />
+          <ButtonShape name='Cylinder' />
         </Grid>
         <Grid item>
-          <ButtonShape name="Pyramid" />
+          <ButtonShape name='Pyramid' />
         </Grid>
         <Grid item>
-          <ButtonShape name="Obj" />
+          <ButtonShape name='Obj' />
         </Grid>
       </Grid>
     </div>

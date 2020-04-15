@@ -32,18 +32,18 @@ const Explorer = () => {
 
   return (
     <div className={classes.root}>
-      <Typography variant="h6" className={classes.title}>
+      <Typography variant='h6' className={classes.title}>
         Explorer
       </Typography>
       <TreeView defaultCollapseIcon={<ExpandMoreIcon />} defaultExpandIcon={<ChevronRightIcon />}>
-        <TreeItem nodeId="1" label="Scene">
-          <TreeItem nodeId="2" label="Plane" />
+        <TreeItem nodeId='1' label='Scene'>
+          <TreeItem nodeId='2' label='Plane' />
         </TreeItem>
-        <TreeItem nodeId="5" label="Assets">
-          <TreeItem nodeId="6" label="Shaders">
-            <TreeItem nodeId="7" label="shader-one">
-              <TreeItem nodeId="8" label="one.fs" />
-              <TreeItem nodeId="9" label="one.vs" />
+        <TreeItem nodeId='5' label='Assets'>
+          <TreeItem nodeId='6' label='Shaders'>
+            <TreeItem nodeId='7' label='shader-one'>
+              <TreeItem nodeId='8' label='one.fs' />
+              <TreeItem nodeId='9' label='one.vs' />
             </TreeItem>
           </TreeItem>
         </TreeItem>

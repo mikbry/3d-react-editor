@@ -9,8 +9,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { useStore } from '../../store';
-import SceneParams from '../../components/SceneParams';
+import { useStore } from '../../store/store';
+import SceneParams from '../SceneParams';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -44,7 +44,7 @@ const Inspector = () => {
   }
   return (
     <div className={classes.root}>
-      <Typography variant="h6" className={classes.title}>
+      <Typography variant='h6' className={classes.title}>
         Inspector :: {selectedItem.type}
       </Typography>
       {params}

@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import GLView from '../../components/GLView';
+import GLView from '../GLView';
 
 const Viewport = ({ scene }) => (
   <div style={{ width: '720px', height: '480px', position: 'relative', margin: 'auto' }}>
